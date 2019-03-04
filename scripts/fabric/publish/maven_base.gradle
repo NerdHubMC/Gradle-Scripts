@@ -1,0 +1,29 @@
+// import utility functions
+apply from: "https://raw.githubusercontent.com/NerdHubMC/Gradle-Scripts/master/scripts/utilities.gradle"
+
+plugins {
+    id "maven-publish"
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact(jar) {
+                builtBy remapJar
+            }
+            if(project.tasks.findByName('sourcesJar')) {
+                artifact(project.tasks.findByName('sourcesJar')) {
+                    builtBy project.tasks.findByName('remapSourcesJar')
+                }
+            }
+
+            if(project.tasks.findByName('javadocJar')) {
+                artifact project.tasks.findByName('javadocJar')
+            }
+
+            if(project.tasks.findByName('apiJar')) {
+                artifact project.tasks.findByName('apiJar')
+            }
+        }
+    }
+}

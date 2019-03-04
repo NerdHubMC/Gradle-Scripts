@@ -1,0 +1,69 @@
+pluginManagement {
+    repositories {
+        jcenter()
+        maven {
+            name = 'Fabric'
+            url = 'https://maven.fabricmc.net/'
+        }
+        gradlePluginPortal()
+    }
+}
+plugins {
+    id "fabric-loom" version "0.2.0-SNAPSHOT"
+}
+
+// import utility functions
+apply from: "https://raw.githubusercontent.com/NerdHubMC/Gradle-Scripts/master/scripts/utilities.gradle"
+apply from: "https://raw.githubusercontent.com/NerdHubMC/Gradle-Scripts/master/scripts/fabric/publish/nerdhub_maven.gradle"
+apply from: "https://raw.githubusercontent.com/NerdHubMC/Gradle-Scripts/master/scripts/fabric/publish/curseforge.gradle"
+
+minecraft {
+}
+
+repositories {
+    mavenCentral()
+}
+
+// all the versions are exported so tehy can be queried if needed
+ext {
+    findbugs_version = 3.0.2
+}
+
+dependencies {
+    compileOnly "com.google.code.findbugs:jsr305:${findbugs_version}"
+}
+
+compileJava {
+    options.encoding = StandardCharsets.UTF_8.name()
+}
+
+if (JavaVersion.current().isJava8Compatible()) {
+    allprojects {
+        tasks.withType(Javadoc) {
+            options.addStringOption("Xdoclint:none", "-quiet")
+        }
+    }
+}
+
+jar {
+    from "LICENSE.md"
+    from "LICENSE"
+    manifest.mainAttributes(
+            "Implementation-Title": project.archivesBaseName,
+            "Implementation-Version": project.version,
+            "Maven-Artifact": "${project.group}:${project.name}:${project.version}".toLowerCase(Locale.ROOT),
+            "Built-On-Minecraft": "${mc_version}",
+            "Built-On-Java": "${System.getProperty("java.vm.version")} (${System.getProperty("java.vm.vendor")})"
+    )
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    from sourceSets.main.allSource
+    classifier = "sources"
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    from javadoc.destinationDir
+    classifier = "javadoc"
+}
+tasks.build.dependsOn javadocJar

@@ -1,0 +1,71 @@
+// This Script contains a collection of mods that are suitable to be in any generic development environment.
+// it also adds the required source repositories for the dependencies to work.
+
+// all the versions are exported so tehy can be queried if needed
+ext {
+    // Mod Menu
+    modmenu_version = 1.1.2-24
+
+    // Developer Mode
+    developer_mode_version = 1.0.4
+    
+    // While we wait
+    while_we_wait_version = 1.0.0
+
+    // Gamemode Numbers
+    gm_numbers_version = 1.1.0
+
+    //Plugin Loader (HWYLA and REI)
+    plugin_loader_version = 1.14-1.0.6-8
+
+    // Here's what you're looking at (HWYLA)
+    hwyla_version = 1.14-1.9.10-52
+
+    // Roughly Enough Items (REI)
+    roughly_enough_items_version = 2.3.1.53
+
+    // REI Addons (waiting for update)
+    //rei_addons_version = 1.0.4
+}
+
+// declare all the needed repositories
+repositories {
+    maven {
+        name = "FabricMC"
+        url = "https://maven.fabricmc.net"
+    }
+    maven {
+        name = "TehNut"
+        url = "https://tehnut.info/maven"
+    }
+    maven {
+        name = "JamiesWhiteShirt"
+        url = "https://maven.jamieswhiteshirt.com/libs-release"
+    }
+    maven {
+        name = "CurseForge"
+        url = "https://minecraft.curseforge.com/api/maven"
+    }
+}
+
+// declare the actual dependencies
+dependencies {
+    // TODO switch to modRuntime when that is made a thing
+
+    // FabricMC
+    modCompile "io.github.prospector.modmenu:ModMenu:${ext.modmenu_version}"
+
+    // TehNut
+    modCompile "info.tehnut.pluginloader:plugin-loader:${ext.plugin_loader_version}"
+    modCompile "mcp.mobius.waila:Hwyla:${ext.hwyla_version}"
+
+    // JamiesWhiteShirt
+    modCompile "com.jamieswhiteshirt:developer-mode:${ext.developer_mode_version}"
+
+    // CurseForge
+    modCompile "whilewewait:whilewewait:${ext.while_we_wait_version}"
+    modCompile "roughly-enough-items:RoughlyEnoughItems:${ext.roughly_enough_items_version}"
+    modCompile "gamemode-numbers-fabric:GamemodeNumbers:${ext.gm_numbers_version}"
+    //modCompile "rei-addons:REIAddons:${ext.rei_addons_version}"
+    
+}

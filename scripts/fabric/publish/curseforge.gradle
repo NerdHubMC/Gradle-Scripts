@@ -1,0 +1,67 @@
+// import utility functions
+apply from: "https://raw.githubusercontent.com/NerdHubMC/Gradle-Scripts/master/scripts/utilities.gradle"
+apply from: "https://raw.githubusercontent.com/NerdHubMC/Gradle-Scripts/master/scripts/fabric/publish/changelog.gradle"
+
+// apply the CurseGradle plugin
+plugins {
+    id "com.matthewprenger.cursegradle" version "1.1.2"
+}
+
+//configure the plugin
+curseforge {
+    if (getProjectProperty("curse_key") != null) {
+        apiKey = getProjectProperty("curse_key")
+    }
+
+    if (project.hasProperty("curseforge_id")) {
+        project {
+            id = findProperty("curseforge_id")
+            mainArtifact(jar) {
+                def fileDisplayName = getProjectProperty("display_name") ?: project.archivesBaseName
+                fileDisplayName += " v" + project.version
+                if(getProjectProperty("minecraft_version") != null) fileDisplayName += " MC" + getProjectProperty("minecraft_version")
+                displayName = fileDisplayName
+            }
+            releaseType = project.release_type
+
+            //TODO remove when MC 1.14 releases
+            //usually automatically determined by the CurseGradle plugin
+            addGameVersion '1.14-Snapshot'
+
+            changelogType = "markdown"
+            changelog = getChangelogText()
+
+            def curseRelations = getProjectProperty("curseRelations")
+            if(curseRelations != null) {
+                relations = curseRelations
+            }
+
+            if(project.tasks.findByName('javadocJar')) {
+                addArtifact project.tasks.findByName('javadocJar')
+            }
+
+            if(project.tasks.findByName('sourcesJar')) {
+                addArtifact project.tasks.findByName('javadocJar')
+            }
+            
+            if(project.tasks.findByName('apiJar')) {
+                addArtifact project.tasks.findByName('javadocJar')
+            }
+        }
+        options {
+            forgeGradleIntegration = false
+        }
+
+    }
+}
+
+afterEvaluate {
+    //make curseforge task(s) depend on build
+    def remapTasks = project.tasks.collect { it.name.startsWith("remap") }
+    project.tasks.collect { it.name.startsWith("curseforge")}.each { it ->
+        println("adding remap dependencies for task " + it.name)
+            remapTasks.each { task ->
+                it.dependsOn task
+            }
+    }
+}

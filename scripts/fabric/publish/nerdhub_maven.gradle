@@ -1,0 +1,21 @@
+// import utility functions
+apply from: "https://raw.githubusercontent.com/NerdHubMC/Gradle-Scripts/master/scripts/fabric/publish/maven_base.gradle"
+
+// publish to the nerdhub maven if credentials are set
+publishing {
+    repositories {
+        if (getProjectProperty("nerdhub_maven_user") != null) {
+            maven {
+                name = "NerdHub"
+                url = getProjectProperty("nerdhub_maven_url")
+                credentials {
+                    username = getProjectProperty("nerdhub_maven_user")
+                    password = getProjectProperty("nerdhub_maven_pass")
+                }
+                authentication {
+                    basic(BasicAuthentication)
+                }
+            }
+        }
+    }
+}
