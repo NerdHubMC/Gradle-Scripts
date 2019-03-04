@@ -1,10 +1,6 @@
 // import utility functions
 apply from: "https://raw.githubusercontent.com/NerdHubMC/Gradle-Scripts/master/scripts/utilities.gradle"
 
-plugins {
-    id "maven-publish"
-}
-
 publishing {
     publications {
         mavenJava(MavenPublication) {
