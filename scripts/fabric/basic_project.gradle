@@ -1,3 +1,5 @@
+import java.nio.charset.StandardCharsets
+
 // import utility functions
 apply from: "https://raw.githubusercontent.com/NerdHubMC/Gradle-Scripts/master/scripts/utilities.gradle"
 apply from: "https://raw.githubusercontent.com/NerdHubMC/Gradle-Scripts/master/scripts/fabric/publish/nerdhub_maven.gradle"
@@ -12,11 +14,11 @@ repositories {
 
 // all the versions are exported so tehy can be queried if needed
 ext {
-    findbugs_version = 3.0.2
+    findbugs_version = "3.0.2"
 }
 
 dependencies {
-    compileOnly "com.google.code.findbugs:jsr305:${findbugs_version}"
+    compileOnly "com.google.code.findbugs:jsr305:${project.ext.findbugs_version}"
 }
 
 compileJava {
