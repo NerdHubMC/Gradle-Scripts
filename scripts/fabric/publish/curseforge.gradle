@@ -53,7 +53,7 @@ curseforge {
 afterEvaluate {
     //make curseforge task(s) depend on build
     def remapTasks = project.tasks.collect { rTask -> rTask.name.startsWith("remap") }
-    project.tasks.collect { it -> it.name.startsWith("curseforge")}.each { cfTask ->
+    project.tasks.collect { t -> t.name.startsWith("curseforge")}.each { cfTask ->
         println("adding remap dependencies for task " + it.name)
         remapTasks.each { task ->
             cfTask.dependsOn task
