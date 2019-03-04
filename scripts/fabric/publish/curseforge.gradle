@@ -4,17 +4,17 @@ apply from: "https://raw.githubusercontent.com/NerdHubMC/Gradle-Scripts/master/s
 
 //configure the plugin
 curseforge {
-    if (getProjectProperty("curse_key") != null) {
-        apiKey = getProjectProperty("curse_key")
+    if (project.getProjectProperty("curse_key") != null) {
+        apiKey = project.getProjectProperty("curse_key")
     }
 
     if (project.hasProperty("curseforge_id")) {
         project {
             id = findProperty("curseforge_id")
             mainArtifact(jar) {
-                def fileDisplayName = getProjectProperty("display_name") ?: project.archivesBaseName
+                def fileDisplayName = project.getProjectProperty("display_name") ?: project.archivesBaseName
                 fileDisplayName += " v" + project.version
-                if(getProjectProperty("minecraft_version") != null) fileDisplayName += " MC" + getProjectProperty("minecraft_version")
+                if(project.getProjectProperty("minecraft_version") != null) fileDisplayName += " MC" + project.getProjectProperty("minecraft_version")
                 displayName = fileDisplayName
             }
             releaseType = project.release_type
@@ -24,9 +24,9 @@ curseforge {
             addGameVersion '1.14-Snapshot'
 
             changelogType = "markdown"
-            changelog = getChangelogText()
+            changelog = project.getChangelogText()
 
-            def curseRelations = getProjectProperty("curseRelations")
+            def curseRelations = project.getProjectProperty("curseRelations")
             if(curseRelations != null) {
                 relations = curseRelations
             }
