@@ -55,8 +55,8 @@ afterEvaluate {
     def remapTasks = project.tasks.collect { rTask -> rTask.name.startsWith("remap") }
     project.tasks.collect { it -> it.name.startsWith("curseforge")}.each { cfTask ->
         println("adding remap dependencies for task " + it.name)
-            remapTasks.each { task ->
-                cfTask.dependsOn task
-            }
+        remapTasks.each { task ->
+            cfTask.dependsOn task
+        }
     }
 }
