@@ -5,3 +5,9 @@ def getProjectProperty(String name) {
 def getSystemProperty(String name) {
     return System.getenv(name) ?: project.findProperty(name)
 }
+
+// Export methods by turning them into closures
+ext {
+    getProjectProperty = this.&getProjectProperty
+    getSystemProperty = this.&getSystemProperty
+}

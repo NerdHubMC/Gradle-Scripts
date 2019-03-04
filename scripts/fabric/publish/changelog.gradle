@@ -41,3 +41,8 @@ String getChangelogText() {
     str += "\n\n see full changelog [here](" + findProperty("changelog_url") + " \"Changelog\")"
     return str
 }
+
+// Export methods by turning them into closures
+ext {
+    getChangelogText = this.&getChangelogText
+}
