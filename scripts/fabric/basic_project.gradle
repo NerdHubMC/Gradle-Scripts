@@ -12,7 +12,7 @@ repositories {
     mavenCentral()
 }
 
-// all the versions are exported so tehy can be queried if needed
+// all the versions are exported so they can be queried if needed
 ext {
     findbugs_version = "3.0.2"
 }
