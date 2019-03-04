@@ -4,28 +4,28 @@
 // all the versions are exported so tehy can be queried if needed
 ext {
     // Mod Menu
-    modmenu_version = 1.1.2-24
+    modmenu_version = "1.1.2-24"
 
     // Developer Mode
-    developer_mode_version = 1.0.4
+    developer_mode_version = "1.0.4"
     
     // While we wait
-    while_we_wait_version = 1.0.0
+    while_we_wait_version = "1.0.0"
 
     // Gamemode Numbers
-    gm_numbers_version = 1.1.0
+    gm_numbers_version = "1.1.0"
 
     //Plugin Loader (HWYLA and REI)
-    plugin_loader_version = 1.14-1.0.6-8
+    plugin_loader_version = "1.14-1.0.6-8"
 
     // Here's what you're looking at (HWYLA)
-    hwyla_version = 1.14-1.9.10-52
+    hwyla_version = "1.14-1.9.10-52"
 
     // Roughly Enough Items (REI)
-    roughly_enough_items_version = 2.3.1.53
+    roughly_enough_items_version = "2.3.1.53"
 
     // REI Addons (waiting for update)
-    //rei_addons_version = 1.0.4
+    //rei_addons_version = "1.0.4"
 }
 
 // declare all the needed repositories
