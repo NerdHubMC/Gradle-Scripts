@@ -53,19 +53,19 @@ dependencies {
     // TODO switch to modRuntime when that is made a thing
 
     // FabricMC
-    modCompile "io.github.prospector.modmenu:ModMenu:${ext.modmenu_version}"
+    modCompile "io.github.prospector.modmenu:ModMenu:${project.ext.modmenu_version}"
 
     // TehNut
-    modCompile "info.tehnut.pluginloader:plugin-loader:${ext.plugin_loader_version}"
-    modCompile "mcp.mobius.waila:Hwyla:${ext.hwyla_version}"
+    modCompile "info.tehnut.pluginloader:plugin-loader:${project.ext.plugin_loader_version}"
+    modCompile "mcp.mobius.waila:Hwyla:${project.ext.hwyla_version}"
 
     // JamiesWhiteShirt
-    modCompile "com.jamieswhiteshirt:developer-mode:${ext.developer_mode_version}"
+    modCompile "com.jamieswhiteshirt:developer-mode:${project.ext.developer_mode_version}"
 
     // CurseForge
-    modCompile "whilewewait:whilewewait:${ext.while_we_wait_version}"
-    modCompile "roughly-enough-items:RoughlyEnoughItems:${ext.roughly_enough_items_version}"
-    modCompile "gamemode-numbers-fabric:GamemodeNumbers:${ext.gm_numbers_version}"
-    //modCompile "rei-addons:REIAddons:${ext.rei_addons_version}"
+    modCompile "whilewewait:whilewewait:${project.ext.while_we_wait_version}"
+    modCompile "roughly-enough-items:RoughlyEnoughItems:${project.ext.roughly_enough_items_version}"
+    modCompile "gamemode-numbers-fabric:GamemodeNumbers:${project.ext.gm_numbers_version}"
+    //modCompile "rei-addons:REIAddons:${project.ext.rei_addons_version}"
     
 }
