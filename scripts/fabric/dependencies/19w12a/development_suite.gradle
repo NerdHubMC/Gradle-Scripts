@@ -4,7 +4,7 @@
 // all the versions are exported so tehy can be queried if needed
 ext {
     // Mod Menu
-    //modmenu_version = "1.1.4-27"
+    modmenu_version = "1.1.5-30"
 
     // Developer Mode
     developer_mode_version = "1.0.7"
@@ -16,10 +16,10 @@ ext {
     gm_numbers_version = "1.1.0"
     
     //Plugin Loader (HWYLA and REI)
-    //plugin_loader_version = "1.14-1.0.6-8"
+    plugin_loader_version = "1.14-1.0.6-8"
 
     // Here's what you're looking at (HWYLA)
-    //hwyla_version = "1.14-1.9.10-52"
+    hwyla_version = "1.14-1.9.12-54"
 
     // Roughly Enough Items (REI)
     //roughly_enough_items_version = "2.3.1.53"
@@ -53,11 +53,11 @@ dependencies {
     // TODO switch to modRuntime when that is made a thing
 
     // FabricMC
-    //modCompile "io.github.prospector.modmenu:ModMenu:${project.ext.modmenu_version}"
+    modCompile "io.github.prospector.modmenu:ModMenu:${project.ext.modmenu_version}"
 
     // TehNut
-    //modCompile "info.tehnut.pluginloader:plugin-loader:${project.ext.plugin_loader_version}"
-    //modCompile "mcp.mobius.waila:Hwyla:${project.ext.hwyla_version}"
+    modCompile "info.tehnut.pluginloader:plugin-loader:${project.ext.plugin_loader_version}"
+    modCompile "mcp.mobius.waila:Hwyla:${project.ext.hwyla_version}"
 
     // JamiesWhiteShirt
     modCompile "com.jamieswhiteshirt:developer-mode:${project.ext.developer_mode_version}"
