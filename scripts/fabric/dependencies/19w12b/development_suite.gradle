@@ -19,7 +19,7 @@ ext {
     plugin_loader_version = "1.14-1.0.6-8"
 
     // Here's what you're looking at (HWYLA)
-    hwyla_version = "1.14-1.9.12-54"
+    hwyla_version = "1.14-1.9.13-55"
 
     // Roughly Enough Items (REI)
     //roughly_enough_items_version = "2.3.1.53"
