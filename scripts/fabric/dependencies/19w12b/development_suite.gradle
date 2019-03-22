@@ -4,7 +4,7 @@
 // all the versions are exported so tehy can be queried if needed
 ext {
     // Mod Menu
-    modmenu_version = "1.1.5-30"
+    modmenu_version = "1.1.6-31"
 
     // Developer Mode
     developer_mode_version = "1.0.8"
