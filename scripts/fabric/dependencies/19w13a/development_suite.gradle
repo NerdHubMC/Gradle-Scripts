@@ -22,7 +22,7 @@ ext {
     hwyla_version = "1.14-1.9.13-55"
 
     // Roughly Enough Items (REI)
-    //roughly_enough_items_version = "2.3.1.53"
+    roughly_enough_items_version = "2.5.1.74"
 
     // REI Addons (waiting for update)
     //rei_addons_version = "1.0.4"
@@ -56,15 +56,15 @@ dependencies {
     //modCompile "io.github.prospector.modmenu:ModMenu:${project.ext.modmenu_version}"
 
     // TehNut
-    //modCompile "info.tehnut.pluginloader:plugin-loader:${project.ext.plugin_loader_version}"
-    //modCompile "mcp.mobius.waila:Hwyla:${project.ext.hwyla_version}"
+    modCompile "info.tehnut.pluginloader:plugin-loader:${project.ext.plugin_loader_version}"
+    modCompile "mcp.mobius.waila:Hwyla:${project.ext.hwyla_version}"
 
     // JamiesWhiteShirt
     modCompile "com.jamieswhiteshirt:developer-mode:${project.ext.developer_mode_version}"
 
     // CurseForge
     modCompile "whilewewait:whilewewait:${project.ext.while_we_wait_version}"
-    //modCompile "roughly-enough-items:RoughlyEnoughItems:${project.ext.roughly_enough_items_version}"
+    modCompile "roughly-enough-items:RoughlyEnoughItems:${project.ext.roughly_enough_items_version}"
     modCompile "gamemode-numbers-fabric:GamemodeNumbers:${project.ext.gm_numbers_version}"
     //modCompile "rei-addons:REIAddons:${project.ext.rei_addons_version}"
 
