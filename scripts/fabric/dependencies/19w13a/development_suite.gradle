@@ -24,8 +24,11 @@ ext {
     // Roughly Enough Items (REI)
     roughly_enough_items_version = "2.5.1.74"
 
+    // Cloth [dependency for REI]
+    cloth_version = "0.1.4.14"
+
     // REI Addons (waiting for update)
-    //rei_addons_version = "1.0.4"
+    rei_addons_version = "1.0.5"
 }
 
 // declare all the needed repositories
@@ -64,8 +67,10 @@ dependencies {
 
     // CurseForge
     modCompile "whilewewait:whilewewait:${project.ext.while_we_wait_version}"
+
     modCompile "roughly-enough-items:RoughlyEnoughItems:${project.ext.roughly_enough_items_version}"
-    modCompile "gamemode-numbers-fabric:GamemodeNumbers:${project.ext.gm_numbers_version}"
+    modCompile "cloth:Cloth:${project.ext.cloth_version}"
     //modCompile "rei-addons:REIAddons:${project.ext.rei_addons_version}"
 
+    modCompile "gamemode-numbers-fabric:GamemodeNumbers:${project.ext.gm_numbers_version}"
 }
