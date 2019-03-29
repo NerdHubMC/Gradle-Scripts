@@ -3,10 +3,10 @@
 
 // all the versions are exported so tehy can be queried if needed
 ext {
-    // Mod Menu
+    // Mod Menu (waiting for update)
     modmenu_version = "1.1.7-33"
 
-    // Developer Mode
+    // Developer Mode (waiting for update)
     developer_mode_version = "1.0.9"
 
     // While we wait
@@ -60,7 +60,7 @@ dependencies {
     modCompile "mcp.mobius.waila:Hwyla:${project.ext.hwyla_version}"
 
     // JamiesWhiteShirt
-    modCompile "com.jamieswhiteshirt:developer-mode:${project.ext.developer_mode_version}"
+    //modCompile "com.jamieswhiteshirt:developer-mode:${project.ext.developer_mode_version}"
 
     // CurseForge
     modCompile "whilewewait:whilewewait:${project.ext.while_we_wait_version}"
