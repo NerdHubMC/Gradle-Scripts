@@ -2,7 +2,6 @@ import java.nio.charset.StandardCharsets
 
 // import utility functions
 apply from: "https://raw.githubusercontent.com/NerdHubMC/Gradle-Scripts/master/scripts/utilities.gradle"
-apply from: "https://raw.githubusercontent.com/NerdHubMC/Gradle-Scripts/master/scripts/fabric/publish/nerdhub_maven.gradle"
 
 minecraft {
 }
@@ -55,4 +54,5 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 }
 tasks.build.dependsOn javadocJar
 
+apply from: "https://raw.githubusercontent.com/NerdHubMC/Gradle-Scripts/master/scripts/fabric/publish/nerdhub_maven.gradle"
 apply from: "https://raw.githubusercontent.com/NerdHubMC/Gradle-Scripts/master/scripts/fabric/publish/curseforge.gradle"
