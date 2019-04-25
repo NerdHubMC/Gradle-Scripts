@@ -19,7 +19,7 @@ ext {
     hwyla_version = "1.14-1.9.16-60"
 
     // Roughly Enough Items (REI)
-    roughly_enough_items_version = "2.3.1.53"
+    roughly_enough_items_version = "2.7.11.97"
 
     // REI Addons
     rei_addons_version = "1.1.0"
