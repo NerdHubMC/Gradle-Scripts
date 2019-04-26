@@ -8,17 +8,19 @@ publishing {
                 builtBy remapJar
             }
             if(project.tasks.findByName('sourcesJar')) {
-                artifact(project.tasks.findByName('sourcesJar')) {
-                    builtBy project.tasks.findByName('remapSourcesJar')
+                artifact(project.tasks.getByName('sourcesJar')) {
+                    builtBy project.tasks.getByName('remapSourcesJar')
                 }
             }
 
             if(project.tasks.findByName('javadocJar')) {
-                artifact project.tasks.findByName('javadocJar')
+                artifact project.tasks.getByName('javadocJar')
             }
 
-            if(project.tasks.findByName('apiJar')) {
-                artifact project.tasks.findByName('apiJar')
+            if(project.hasProperty("api_package")) {
+                artifact (project.tasks.getByName('apiJar')) {
+                    builtBy project.tasks.getByName('remapApiJar')
+                }
             }
         }
     }
