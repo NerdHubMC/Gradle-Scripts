@@ -31,7 +31,7 @@ curseforge {
             }
 
             if(project.tasks.findByName('sourcesJar')) {
-                addArtifact project.tasks.findByName('javadocJar')
+                addArtifact project.tasks.findByName('sourcesJar')
             }
             
             if(project.tasks.findByName('apiJar')) {
