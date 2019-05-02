@@ -4,7 +4,7 @@
 // all the versions are exported so tehy can be queried if needed
 ext {
     // Mod Menu
-    modmenu_version = "1.5.1-81"
+    modmenu_version = "1.5.2-82"
 
     // Developer Mode
     developer_mode_version = "1.0.11"
@@ -19,9 +19,9 @@ ext {
     hwyla_version = "1.14-1.9.16-60"
 
     // Roughly Enough Items (REI)
-    roughly_enough_items_version = "2.7.11.97"
+    roughly_enough_items_version = "2.8.1.101"
     cloth_events_version = "0.3.1.23"
-    cloth_config_version = "0.1.3.7"
+    cloth_config_version = "0.2.1.14"
 
     // REI Addons
     rei_addons_version = "1.1.0"
