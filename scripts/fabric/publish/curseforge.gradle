@@ -21,7 +21,7 @@ curseforge {
 
             //TODO remove when MC 1.14 releases
             //usually automatically determined by the CurseGradle plugin
-            addGameVersion '1.14-Snapshot'
+            addGameVersion '1.14'
 
             changelogType = "markdown"
             changelog = project.getChangelogText()
