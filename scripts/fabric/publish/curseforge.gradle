@@ -35,7 +35,7 @@ curseforge {
             }
             
             if(project.tasks.findByName('apiJar')) {
-                addArtifact project.tasks.findByName('javadocJar')
+                addArtifact project.tasks.findByName('apiJar')
             }
         }
         options {
