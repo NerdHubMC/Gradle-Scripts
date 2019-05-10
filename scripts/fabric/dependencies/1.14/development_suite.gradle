@@ -25,6 +25,8 @@ ext {
 
     // REI Addons
     rei_addons_version = "1.1.0"
+
+    leaf_decay_version = "1.0.2"
 }
 
 // declare all the needed repositories
@@ -67,5 +69,5 @@ dependencies {
     modCompile "rei-addons:REIAddons:${project.ext.rei_addons_version}"
     modCompile "cloth:ClothEvents:${project.ext.cloth_events_version}" //needed for REI
     modCompile "cloth-config:ClothConfig:${project.ext.cloth_config_version}" // needed for REI
-    
+    modCompile "leaf-decay:leaf:decay:${project.ext.leaf_decay_version}"
 }
