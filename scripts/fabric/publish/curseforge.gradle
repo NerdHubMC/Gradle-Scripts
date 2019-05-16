@@ -14,41 +14,84 @@ curseforge {
             mainArtifact(jar) {
                 def fileDisplayName = project.getProjectProperty("display_name") ?: project.archivesBaseName
                 fileDisplayName += " v" + project.version
-                if(project.getProjectProperty("minecraft_version") != null) fileDisplayName += " MC" + project.getProjectProperty("minecraft_version")
+                if (project.getProjectProperty("minecraft_version") != null) fileDisplayName += " MC" + project.getProjectProperty("minecraft_version")
                 displayName = fileDisplayName
             }
             releaseType = project.release_type
 
-            //TODO remove when MC 1.14 releases
-            //usually automatically determined by the CurseGradle plugin
-            addGameVersion '1.14'
-
-            changelogType = "markdown"
-            changelog = project.getChangelogText()
-
-            if(project.tasks.findByName('javadocJar')) {
-                addArtifact project.tasks.findByName('javadocJar')
+            //usually automatically determined by the CurseGradle plugin, but won't work with fabric
+            final def gVersions = "${project.curseforge_versions}".split("; ")
+            gVersions.each {
+                addGameVersion "${it}"
             }
 
-            if(project.tasks.findByName('sourcesJar')) {
-                addArtifact project.tasks.findByName('sourcesJar')
-            }
-            
-            if(project.tasks.findByName('apiJar')) {
-                addArtifact project.tasks.findByName('apiJar')
+            if (project.hasProperty('cf_requirements') || project.hasProperty('cf_optionals') || project.hasProperty('cf_embeddeds') || project.hasProperty('cf_tools') || project.hasProperty('cf_incompatibles') || project.hasProperty('cf_includes')) {
+                relations {
+                    if (project.hasProperty('cf_requirements')) {
+                        final def requirements = "${project.cf_requirements}".split('; ')
+                        requirements.each {
+                            requiredDependency "${it}"
+                        }
+                    }
+                    if (project.hasProperty('cf_optionals')) {
+                        final def optionals = "${project.cf_optionals}".split('; ')
+                        optionals.each {
+                            optionalDependency "${it}"
+                        }
+                    }
+                    if (project.hasProperty('cf_embeddeds')) {
+                        final def embeddeds = "${project.cf_embeddeds}".split('; ')
+                        embeddeds.each {
+                            embeddedLibrary "${it}"
+                        }
+                    }
+                    if (project.hasProperty('cf_tools')) {
+                        final def tools = "${project.cf_tools}".split('; ')
+                        tools.each {
+                            tool "${it}"
+                        }
+                    }
+                    if (project.hasProperty('cf_incompatibles')) {
+                        final def incompatibles = "${project.cf_incompatibles}".split('; ')
+                        incompatibles.each {
+                            incompatible "${it}"
+                        }
+                    }
+                    if (project.hasProperty('cf_includes')) {
+                        final def includes = "${project.cf_includes}".split('; ')
+                        includes.each {
+                            include "${it}"
+                        }
+                    }
+                }
             }
         }
-        options {
-            forgeGradleIntegration = false
+
+        changelogType = "markdown"
+        changelog = project.getChangelogText()
+
+        if (project.tasks.findByName('javadocJar')) {
+            addArtifact project.tasks.findByName('javadocJar')
         }
 
+        if (project.tasks.findByName('sourcesJar')) {
+            addArtifact project.tasks.findByName('sourcesJar')
+        }
+
+        if (project.tasks.findByName('apiJar')) {
+            addArtifact project.tasks.findByName('apiJar')
+        }
+    }
+    options {
+        forgeGradleIntegration = false
     }
 }
+
 
 afterEvaluate {
     //make curseforge task(s) depend on build
     def remapTasks = project.tasks.findAll { task -> task.name.startsWith("remap") }
-    project.tasks.findAll { t -> t.name.startsWith("curseforge")}.each { cfTask ->
+    project.tasks.findAll { t -> t.name.startsWith("curseforge") }.each { cfTask ->
         println("adding remap dependencies for task " + cfTask.name)
         remapTasks.each { task ->
             cfTask.dependsOn task
