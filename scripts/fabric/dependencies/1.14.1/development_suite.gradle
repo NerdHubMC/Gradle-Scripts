@@ -1,0 +1,82 @@
+// This Script contains a collection of mods that are suitable to be in any generic development environment.
+// it also adds the required source repositories for the dependencies to work.
+
+// all the versions are exported so tehy can be queried if needed
+ext {
+    // Mod Menu
+    modmenu_version = "1.5.4-85"
+
+    // Developer Mode
+    developer_mode_version = "1.0.11"
+    
+    // While we wait
+    while_we_wait_version = "1.2.1"
+
+    // Gamemode Numbers
+    gm_numbers_version = "1.1.0"
+
+    // Here's what you're looking at (HWYLA)
+    hwyla_version = "1.14-1.9.16-60"
+
+    // Roughly Enough Items (REI)
+    roughly_enough_items_version = "2.9.110"
+    cloth_events_version = "0.3.1.23"
+    cloth_config_version = "0.2.1.14"
+
+    // REI Addons
+    rei_addons_version = "1.1.0"
+
+    // Leaf Decay
+    leaf_decay_version = "1.0.2"
+
+    // Informed Load
+    informed_load_version = "1.1.0"
+
+    // Torcherino
+    torcherino_version = "1.7.48"
+}
+
+// declare all the needed repositories
+repositories {
+    maven {
+        name = "FabricMC"
+        url = "https://maven.fabricmc.net"
+    }
+    maven {
+        name = "TehNut"
+        url = "https://tehnut.info/maven"
+    }
+    maven {
+        name = "JamiesWhiteShirt"
+        url = "https://maven.jamieswhiteshirt.com/libs-release"
+    }
+    maven {
+        name = "CurseForge"
+        url = "https://minecraft.curseforge.com/api/maven"
+    }
+}
+
+// declare the actual dependencies
+dependencies {
+    // TODO switch to modRuntime when that is made a thing
+
+    // FabricMC
+    modCompile "io.github.prospector.modmenu:ModMenu:${project.ext.modmenu_version}"
+
+    // TehNut
+    modCompile "mcp.mobius.waila:Hwyla:${project.ext.hwyla_version}"
+
+    // JamiesWhiteShirt
+    modCompile "com.jamieswhiteshirt:developer-mode:${project.ext.developer_mode_version}"
+
+    // CurseForge
+    modCompile "whilewewait:whilewewait:${project.ext.while_we_wait_version}"
+    modCompile "roughly-enough-items:RoughlyEnoughItems:${project.ext.roughly_enough_items_version}"
+    modCompile "gamemode-numbers-fabric:GamemodeNumbers:${project.ext.gm_numbers_version}"
+    modCompile "rei-addons:REIAddons:${project.ext.rei_addons_version}"
+    modCompile "cloth:ClothEvents:${project.ext.cloth_events_version}" //needed for REI
+    modCompile "cloth-config:ClothConfig:${project.ext.cloth_config_version}" // needed for REI
+    modCompile "leaf-decay:leaf:decay:${project.ext.leaf_decay_version}"
+    modCompile "informed-load-fabric:informedload:${project.ext.informed_load_version}"
+    modCompile "torcherino:Torcherino:${project.ext.torcherino_version}"
+}
