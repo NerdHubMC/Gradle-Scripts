@@ -65,21 +65,20 @@ curseforge {
                     }
                 }
             }
-        }
+            changelogType = "markdown"
+            changelog = project.getChangelogText()
 
-        changelogType = "markdown"
-        changelog = project.getChangelogText()
+            if (project.tasks.findByName('javadocJar')) {
+                addArtifact project.tasks.findByName('javadocJar')
+            }
 
-        if (project.tasks.findByName('javadocJar')) {
-            addArtifact project.tasks.findByName('javadocJar')
-        }
+            if (project.tasks.findByName('sourcesJar')) {
+                addArtifact project.tasks.findByName('sourcesJar')
+            }
 
-        if (project.tasks.findByName('sourcesJar')) {
-            addArtifact project.tasks.findByName('sourcesJar')
-        }
-
-        if (project.tasks.findByName('apiJar')) {
-            addArtifact project.tasks.findByName('apiJar')
+            if (project.tasks.findByName('apiJar')) {
+                addArtifact project.tasks.findByName('apiJar')
+            }
         }
     }
     options {
