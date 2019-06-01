@@ -11,13 +11,13 @@ curseforge {
     if (project.hasProperty("curseforge_id")) {
         project {
             id = findProperty("curseforge_id")
+            mainArtifact(file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")) {
+                def fileDisplayName = project.getProjectProperty("display_name") ?: project.archivesBaseName
+                fileDisplayName += " v" + project.version
+                if (project.getProjectProperty("minecraft_version") != null) fileDisplayName += " MC" + project.getProjectProperty("minecraft_version")
+                displayName = fileDisplayName
+            }
             afterEvaluate {
-                mainArtifact(remapJar.output) {
-                    def fileDisplayName = project.getProjectProperty("display_name") ?: project.archivesBaseName
-                    fileDisplayName += " v" + project.version
-                    if (project.getProjectProperty("minecraft_version") != null) fileDisplayName += " MC" + project.getProjectProperty("minecraft_version")
-                    displayName = fileDisplayName
-                }
                 uploadTask.dependsOn(remapJar)
             }
 
