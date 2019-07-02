@@ -2,22 +2,30 @@ String getChangelogText() {
     def changelogFile = project.file("changelog.md")
     String str = ''
     if (!changelogFile.exists()) {
-        System.out.println("No changelog file found, creating one at \"" + changelogFile.getAbsolutePath() + "\"")
-        changelogFile.createNewFile()
-        String newText = '------------------------------------------------------\n' +
-                'Version ' + project.version + '\n' +
-                '------------------------------------------------------\n' +
-                'Additions\n' +
-                '- None\n' +
-                '\n' +
-                'Changes\n' +
-                '- None\n' +
-                '\n' +
-                'Bug Fixes\n' +
-                '- None\n'
-        String oldText = changelogFile.getText()
-        changelogFile.setText(newText + oldText)
-        return str
+        println("No changelog file found, creating one at \"" + changelogFile.getAbsolutePath() + "\"")
+        try {
+            changelogFile.getParentFile().mkdirs()
+            changelogFile.createNewFile()
+            String newText = '------------------------------------------------------\n' +
+                    'Version ' + project.version + '\n' +
+                    '------------------------------------------------------\n' +
+                    'Additions\n' +
+                    '- None\n' +
+                    '\n' +
+                    'Changes\n' +
+                    '- None\n' +
+                    '\n' +
+                    'Bug Fixes\n' +
+                    '- None\n'
+            String oldText = changelogFile.getText()
+            changelogFile.setText(newText + oldText)
+            return str
+        }
+        catch (IOException e) {
+            println("Unable to write changelog file: " + e.getMessage())
+            e.printStackTrace()
+            return ''
+        }
     }
     String separator = '---'
     int lineCount = 0
