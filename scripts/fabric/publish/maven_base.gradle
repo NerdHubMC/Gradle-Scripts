@@ -5,7 +5,9 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             afterEvaluate {
-                artifact(remapJar.output)
+                artifact(file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")) {
+                    builtBy remapJar
+                }
             }
             if (project.tasks.findByName('sourcesJar')) {
                 artifact(project.tasks.getByName('sourcesJar')) {
