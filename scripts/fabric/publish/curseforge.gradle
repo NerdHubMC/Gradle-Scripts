@@ -12,7 +12,7 @@ curseforge {
         project {
             id = findProperty("curseforge_id")
             afterEvaluate {
-                mainArtifact(remapJar.getOutput()) {
+                mainArtifact(file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")) {
                     def fileDisplayName = project.getProjectProperty("display_name") ?: project.archivesBaseName
                     fileDisplayName += " v" + project.version
                     if (project.getProjectProperty("minecraft_version") != null) fileDisplayName += " MC" + project.getProjectProperty("minecraft_version")
